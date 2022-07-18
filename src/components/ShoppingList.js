@@ -7,6 +7,7 @@ function ShoppingList() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [items, setItems] = useState([]);
 
+  // GET method
   useEffect(() => {
     fetch("http://localhost:4000/items")
       .then(res => res.json())
@@ -17,10 +18,12 @@ function ShoppingList() {
     setSelectedCategory(category);
   }
 
+  // POST method............USE SPREAD OPERATOR
   function handleAddItem(newItem) {
     setItems(...items, newItem)
   }
 
+  // PATCH method...........USE MAP METHOD
   function handleUpdateItem(updatedItem) {
     const updatedItems = items.map((item) => {
       if(item.id === updatedItem.id) {
@@ -32,6 +35,7 @@ function ShoppingList() {
     setItems(updatedItems)
   }
 
+  // DELETE method.........USE FILTER METHOD
   function handleDeleteItem(deletedItem) {
     const updatedItems = items.filter((item) => item.id !== deletedItem.id)
     setItems(updatedItems)

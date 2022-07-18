@@ -2,6 +2,7 @@ import React from "react";
 
 function Item({ onDeleteItem, onUpdateItem, item }) {
 
+  // PATCH method...........USES ITEM.ID
   function handleAddToCartButton() {
     fetch(`http://localhost:4000/items/${item.id}`, {
       method: "PATCH",
@@ -16,6 +17,7 @@ function Item({ onDeleteItem, onUpdateItem, item }) {
       .then((updatedItem) => onUpdateItem(updatedItem))
   }
 
+    // DELETE method..........USES ITEM.ID
   function handleDeleteButton() {
     fetch(`http://localhost:4000/items/${item.id}`, {
       method: "DELETE"
